@@ -26,6 +26,7 @@ for(var i=0;i<document.querySelectorAll(".drum").length;i++)
 {
  document.querySelectorAll(".drum")[i].addEventListener("click",function(){
    makeSound(this.innerHTML);
+   buttonAnimation(this.innerHTML);
  });//using loop to assign all button an event listener
 }
 /*document.querySelectorAll("button")[i].addEventListener("click",handleClick);//note if you put parenthesis after handleclick it will be called as soon as code is read and we dont want that*/
@@ -80,9 +81,11 @@ addEventListener("keydown",function(event)
   if(caps==true)
   {
       makeSound(event.key.toLowerCase());
+      buttonAnimation(event.key.toLowerCase());
   }
   else{
     makeSound(event.key);
+    buttonAnimation(event.key);
   }
 
 });
@@ -126,3 +129,12 @@ function makeSound(key)
 {
   alert("Got clicked");
 }); Use either  also the above is called anonymous function*/
+
+
+function buttonAnimation(currentKey)
+{
+  document.querySelector("."+currentKey).classList.add("pressed");
+  setTimeout(function(){
+    document.querySelector("."+currentKey).classList.remove("pressed");
+  }, 75);
+}
